@@ -20,7 +20,7 @@ Full plan with phases and tasks: `docs/PLAN.md`. Before starting work, check whi
 
 ## Source of truth for design
 
-- Tokens: `design/tokens.json` (colors with light + dark themes, type, spacing, radius, shadow). Generate CSS variables from it; never hard-code colors.
+- Tokens: `design/tokens/` (DTCG format — `base.json`, `light.json`, `dark.json`). Generate CSS variables from it with `npm run tokens`; never hard-code colors.
 - Brand book (principles, voice, color meaning, typography, iconography): `docs/design-system/README.md`
 - Component specs: `docs/design-system/components/<Name>.md`
 - Visual reference markup: `docs/design-system/components/<Name>.preview.html` + `docs/design-system/reference.css` (class prefix `au-`). These are HTML/CSS references, not Angular code: port their look and behavior faithfully into Angular components.

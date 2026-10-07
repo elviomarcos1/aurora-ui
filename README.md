@@ -18,7 +18,7 @@ An accessible Angular design system for real-time hospital dashboards: bed occup
 
 ## What's inside
 
-- **Design tokens** in light and dark themes, every text color pair WCAG AA: [`design/tokens.json`](design/tokens.json)
+- **Design tokens** in light and dark themes, every text color pair WCAG AA: [`design/tokens/`](design/tokens)
 - **Brand book**: principles, voice, color meaning, typography, iconography: [`docs/design-system`](docs/design-system/README.md)
 - **Component specs**: Button, StatusPill, VitalSign, BedCard, AlertBanner, OccupancyMeter, TextField, Icon: [`docs/design-system/components`](docs/design-system/components)
 - **Architecture decisions**: [`docs/decisions`](docs/decisions)

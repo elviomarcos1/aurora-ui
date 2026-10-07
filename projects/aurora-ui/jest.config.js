@@ -1,7 +1,9 @@
-const { createCjsPreset } = require('jest-preset-angular/presets');
+import presets from 'jest-preset-angular/presets/index.js';
+
+const { createCjsPreset } = presets;
 
 /** @type {import('jest').Config} */
-module.exports = {
+export default {
   ...createCjsPreset(),
   displayName: 'aurora-ui',
   rootDir: '.',

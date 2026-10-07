@@ -1,5 +1,5 @@
 // @ts-check
-const { defineConfig } = require('eslint/config');
-const rootConfig = require('../../eslint.config.js');
+import { defineConfig } from 'eslint/config';
+import rootConfig from '../../eslint.config.js';
 
-module.exports = defineConfig([...rootConfig]);
+export default defineConfig([...rootConfig]);

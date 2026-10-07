@@ -1,0 +1,58 @@
+{
+  "space-1": {
+    "$value": "4px",
+    "$type": "dimension",
+    "$description": "Icon-to-text gap, pill inner gap."
+  },
+  "space-2": {
+    "$value": "8px",
+    "$type": "dimension",
+    "$description": "Gap between related controls."
+  },
+  "space-3": {
+    "$value": "12px",
+    "$type": "dimension",
+    "$description": "Pill and input horizontal padding."
+  },
+  "space-4": {
+    "$value": "16px",
+    "$type": "dimension",
+    "$description": "Card padding on dense dashboards."
+  },
+  "space-6": {
+    "$value": "24px",
+    "$type": "dimension",
+    "$description": "Card padding, gap between cards."
+  },
+  "space-8": { "$value": "32px", "$type": "dimension", "$description": "Section spacing." },
+
+  "radius-sm": {
+    "$value": "6px",
+    "$type": "dimension",
+    "$description": "Inputs, small buttons, chips."
+  },
+  "radius-md": { "$value": "10px", "$type": "dimension", "$description": "Buttons, banners." },
+  "radius-lg": {
+    "$value": "16px",
+    "$type": "dimension",
+    "$description": "Cards and panels. Matches the logo mark."
+  },
+  "radius-pill": {
+    "$value": "999px",
+    "$type": "dimension",
+    "$description": "Status pills and meters."
+  },
+
+  "font-display": {
+    "$value": "\"Bricolage Grotesque\", Figtree, system-ui, sans-serif",
+    "$description": "Display face for screen titles and heroes. Used sparingly."
+  },
+  "font-sans": {
+    "$value": "Figtree, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "$description": "Text face for everything people read."
+  },
+  "font-mono": {
+    "$value": "\"IBM Plex Mono\", ui-monospace, \"SFMono-Regular\", Menlo, monospace",
+    "$description": "Numeric face for every live number: vitals, bed codes, times."
+  }
+}

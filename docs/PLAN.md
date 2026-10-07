@@ -14,7 +14,7 @@ Meta: em ~8 semanas (6 a 8 h/semana), publicar a biblioteca **Aurora UI** no npm
 Pronto quando: o CI fica verde e o Storybook abre localmente.
 
 ## Fase 1 · Tokens e temas (semana 2)
-- [ ] Usar `design/tokens.json` dentro da biblioteca
+- [ ] Usar `design/tokens/` dentro da biblioteca
 - [ ] Script que gera `tokens.css` (variáveis CSS para tema claro e escuro)
 - [ ] `ThemeService` com Signal para alternar `data-theme` e lembrar a escolha
 - [ ] Carregar as fontes Bricolage Grotesque, Figtree e IBM Plex Mono

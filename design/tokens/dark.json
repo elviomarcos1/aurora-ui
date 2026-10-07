@@ -1,0 +1,126 @@
+{
+  "surface-0": {
+    "$value": "#0B1514",
+    "$type": "color",
+    "$description": "Page background behind every screen."
+  },
+  "surface-1": {
+    "$value": "#12201F",
+    "$type": "color",
+    "$description": "Cards, panels, table rows. Default ground for text."
+  },
+  "surface-2": {
+    "$value": "#1A2B29",
+    "$type": "color",
+    "$description": "Sunken areas: inputs, track of meters, table headers."
+  },
+  "line": {
+    "$value": "#2A3D3B",
+    "$type": "color",
+    "$description": "Hairline borders and dividers. Decorative only, never the sole boundary of a control."
+  },
+  "line-strong": {
+    "$value": "#5E7774",
+    "$type": "color",
+    "$description": "Control borders (inputs, secondary buttons). 3:1 on surface-1 in both themes."
+  },
+  "ink": {
+    "$value": "#E6F0EE",
+    "$type": "color",
+    "$description": "Primary text on surface-0/1/2. 14:1+ in both themes."
+  },
+  "ink-muted": {
+    "$value": "#9DB3AF",
+    "$type": "color",
+    "$description": "Secondary text, labels, timestamps. 6:1+ on surface-0/1."
+  },
+  "brand": {
+    "$value": "#3CC4B7",
+    "$type": "color",
+    "$description": "Aurora teal. Primary actions, links, selected states. Text on surface-1 passes 6:1."
+  },
+  "brand-strong": {
+    "$value": "#6FD9CD",
+    "$type": "color",
+    "$description": "Hover/pressed for brand; text on brand-soft."
+  },
+  "brand-soft": {
+    "$value": "#123A37",
+    "$type": "color",
+    "$description": "Selected rows, brand tints, quiet highlights."
+  },
+  "on-brand": {
+    "$value": "#062321",
+    "$type": "color",
+    "$description": "Text and icons on a brand fill."
+  },
+  "dawn": {
+    "$value": "#F2B36F",
+    "$type": "color",
+    "$description": "First light. Brand moments only (logo, cover, hero). Never a status colour, never text."
+  },
+  "dawn-soft": {
+    "$value": "#3A2A17",
+    "$type": "color",
+    "$description": "Warm tint for onboarding and empty states."
+  },
+  "critical": {
+    "$value": "#FF8A80",
+    "$type": "color",
+    "$description": "Critical patient status, destructive actions, errors. Text on surface-1 and critical-soft."
+  },
+  "critical-soft": {
+    "$value": "#3B1714",
+    "$type": "color",
+    "$description": "Background of critical alerts and pills."
+  },
+  "on-critical": {
+    "$value": "#2A0B08",
+    "$type": "color",
+    "$description": "Text on a critical fill."
+  },
+  "warning": {
+    "$value": "#F5B94E",
+    "$type": "color",
+    "$description": "Under observation, values approaching limits. Text on surface-1 and warning-soft."
+  },
+  "warning-soft": {
+    "$value": "#352711",
+    "$type": "color",
+    "$description": "Background of warning pills and banners."
+  },
+  "stable": {
+    "$value": "#6BD08E",
+    "$type": "color",
+    "$description": "Stable patient, values in range, success. Text on surface-1 and stable-soft."
+  },
+  "stable-soft": {
+    "$value": "#12301C",
+    "$type": "color",
+    "$description": "Background of stable pills."
+  },
+  "info": {
+    "$value": "#8DB4FF",
+    "$type": "color",
+    "$description": "Neutral information: discharge pending, scheduled, transfers."
+  },
+  "info-soft": {
+    "$value": "#172540",
+    "$type": "color",
+    "$description": "Background of info pills and banners."
+  },
+  "focus-ring": {
+    "$value": "{brand}",
+    "$type": "color",
+    "$description": "Keyboard focus: 2px solid ring with a 2px offset."
+  },
+
+  "shadow-card": {
+    "$value": "0 1px 2px rgba(0,0,0,0.4)",
+    "$description": "Resting cards on surface-0."
+  },
+  "shadow-raised": {
+    "$value": "0 8px 24px rgba(0,0,0,0.5)",
+    "$description": "Menus, popovers, the critical alert banner."
+  }
+}

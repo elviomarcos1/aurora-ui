@@ -6,6 +6,7 @@ out-tsc/
 storybook-static/
 .angular/
 coverage/
+projects/aurora-ui/src/styles/tokens-*.css
 # Editors and OS
 .vscode/*
 !.vscode/extensions.json
