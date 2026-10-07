@@ -1,0 +1,28 @@
+<!-- @dsCard group="Clinical data" height=210 -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>VitalSign — preview</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>html,body{margin:0;background:var(--surface-0);} body{padding:16px;} .au-vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}</style></head>
+<body class="au-root">
+<div class="au-vgrid">
+  <div class="au-card au-vital">
+    <div class="au-vital__head"><span class="au-vital__label">Heart rate</span><span class="au-pill au-pill--stable"><svg viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="4.5"/></svg>Stable</span></div>
+    <div><span class="au-vital__value">78</span><span class="au-vital__unit">bpm</span></div>
+    <svg class="au-vital__spark" viewBox="0 0 240 36" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0.0 32.0 L30.0 23.3 L60.0 27.7 L90.0 10.3 L120.0 19.0 L150.0 6.0 L180.0 14.7 L210.0 23.3 L240.0 14.7 L240 36 L0 36 Z"/><path class="line" d="M0.0 32.0 L30.0 23.3 L60.0 27.7 L90.0 10.3 L120.0 19.0 L150.0 6.0 L180.0 14.7 L210.0 23.3 L240.0 14.7"/><circle cx="240.0" cy="14.7" r="3"/></svg>
+    <span class="au-vital__range">Range 60–100</span>
+  </div>
+  <div class="au-card au-vital au-vital--critical">
+    <div class="au-vital__head"><span class="au-vital__label">SpO₂</span><span class="au-pill au-pill--critical"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0.5 9.6 9.3H0.4z"/></svg>Critical</span></div>
+    <div><span class="au-vital__value">87</span><span class="au-vital__unit">%</span></div>
+    <svg class="au-vital__spark" viewBox="0 0 240 36" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0.0 6.0 L30.0 8.9 L60.0 8.9 L90.0 14.7 L120.0 17.6 L150.0 23.3 L180.0 26.2 L210.0 29.1 L240.0 32.0 L240 36 L0 36 Z"/><path class="line" d="M0.0 6.0 L30.0 8.9 L60.0 8.9 L90.0 14.7 L120.0 17.6 L150.0 23.3 L180.0 26.2 L210.0 29.1 L240.0 32.0"/><circle cx="240.0" cy="32.0" r="3"/></svg>
+    <span class="au-vital__range">Below 90% for 2 min</span>
+  </div>
+  <div class="au-card au-vital">
+    <div class="au-vital__head"><span class="au-vital__label">Blood pressure</span><span class="au-pill au-pill--warning"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0 10 5 5 10 0 5z"/></svg>Observation</span></div>
+    <div><span class="au-vital__value">142/91</span><span class="au-vital__unit">mmHg</span></div>
+    <svg class="au-vital__spark" viewBox="0 0 240 36" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0.0 32.0 L30.0 26.4 L60.0 28.3 L90.0 19.0 L120.0 13.4 L150.0 15.3 L180.0 9.7 L210.0 7.9 L240.0 6.0 L240 36 L0 36 Z"/><path class="line" d="M0.0 32.0 L30.0 26.4 L60.0 28.3 L90.0 19.0 L120.0 13.4 L150.0 15.3 L180.0 9.7 L210.0 7.9 L240.0 6.0"/><circle cx="240.0" cy="6.0" r="3"/></svg>
+    <span class="au-vital__range">Target under 140/90</span>
+  </div>
+</div>
+</body>
+</html>

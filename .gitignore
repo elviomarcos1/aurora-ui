@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+# Build output
+dist/
+out-tsc/
+storybook-static/
+.angular/
+coverage/
+# Editors and OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+# Env
+.env
+*.log
