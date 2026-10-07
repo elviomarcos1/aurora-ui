@@ -9,7 +9,9 @@
     "watch:lib": "ng build aurora-ui --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "ng lint aurora-ui && ng lint showcase"
+    "lint": "ng lint aurora-ui && ng lint showcase",
+    "storybook": "ng run aurora-ui:storybook",
+    "build-storybook": "ng run aurora-ui:build-storybook"
   },
   "private": true,
   "packageManager": "npm@10.9.8",
@@ -42,6 +44,17 @@
     "ng-packagr": "^22.1.0",
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",
-    "typescript-eslint": "8.69.0"
+    "typescript-eslint": "8.69.0",
+    "storybook": "^10.6.1",
+    "@storybook/angular-vite": "^10.6.1",
+    "@storybook/addon-a11y": "^10.6.1",
+    "@storybook/addon-docs": "^10.6.1",
+    "@types/node": "^20",
+    "@angular-devkit/build-angular": "^22.1.0",
+    "@angular-devkit/architect": "^0.2201.0",
+    "@angular-devkit/core": "^22.1.0",
+    "@angular/animations": "^22.1.0",
+    "@analogjs/vite-plugin-angular": "^2.5.2",
+    "vite": "^8.0.0"
   }
 }

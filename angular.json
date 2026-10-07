@@ -30,6 +30,22 @@
             "lintFilePatterns": ["projects/aurora-ui/**/*.ts", "projects/aurora-ui/**/*.html"],
             "eslintConfig": "projects/aurora-ui/eslint.config.js"
           }
+        },
+        "storybook": {
+          "builder": "@storybook/angular-vite:start-storybook",
+          "options": {
+            "configDir": "projects/aurora-ui/.storybook",
+            "browserTarget": "aurora-ui:build",
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular-vite:build-storybook",
+          "options": {
+            "configDir": "projects/aurora-ui/.storybook",
+            "browserTarget": "aurora-ui:build",
+            "outputDir": "storybook-static"
+          }
         }
       }
     },
