@@ -24,6 +24,7 @@ export const Default: Story = {};
 
 export const Sizes: Story = {
   render: () => ({
+    moduleMetadata: { imports: [Icon] },
     template: `
       <div class="row">
         <au-icon name="heart-pulse" [size]="16" />
@@ -41,6 +42,7 @@ export const Sizes: Story = {
 export const ColorFollowsText: Story = {
   name: 'Color follows text',
   render: () => ({
+    moduleMetadata: { imports: [Icon] },
     template: `
       <div class="row">
         <span style="color: var(--ink)"><au-icon name="activity" [size]="24" /></span>
@@ -61,6 +63,7 @@ function tile(name: string): string {
 
 export const Gallery: Story = {
   render: () => ({
+    moduleMetadata: { imports: [Icon] },
     template: `<div class="grid">${AURORA_ICON_NAMES.map(tile).join('')}</div>`,
     styles: [
       `

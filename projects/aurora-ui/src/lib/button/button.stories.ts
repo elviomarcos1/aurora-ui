@@ -26,7 +26,7 @@ const meta: Meta<ButtonArgs> = {
   },
   render: (args) => ({
     props: args,
-    imports: [Button],
+    moduleMetadata: { imports: [Button] },
     template: `
       <au-button [variant]="variant" [icon]="icon" [disabled]="disabled">{{ label }}</au-button>
     `,
@@ -40,7 +40,7 @@ export const Default: Story = {};
 
 export const Variants: Story = {
   render: () => ({
-    imports: [Button],
+    moduleMetadata: { imports: [Button] },
     template: `
       <div class="row">
         <au-button variant="primary" icon="plus">Admit patient</au-button>
@@ -56,7 +56,7 @@ export const Variants: Story = {
 export const IconOnly: Story = {
   name: 'Icon only',
   render: () => ({
-    imports: [Button],
+    moduleMetadata: { imports: [Button] },
     template: `
       <div class="row">
         <au-button variant="secondary" icon="search" ariaLabel="Search patients" />
@@ -70,7 +70,7 @@ export const IconOnly: Story = {
 
 export const Disabled: Story = {
   render: () => ({
-    imports: [Button],
+    moduleMetadata: { imports: [Button] },
     template: `
       <div class="row">
         <au-button variant="primary" [disabled]="true">Discharge</au-button>

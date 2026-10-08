@@ -20,7 +20,7 @@ const meta: Meta<StatusPillArgs> = {
   },
   render: (args) => ({
     props: args,
-    imports: [StatusPill],
+    moduleMetadata: { imports: [StatusPill] },
     template: `<au-status-pill [status]="status">{{ label }}</au-status-pill>`,
   }),
 };
@@ -33,7 +33,7 @@ export const Default: Story = {};
 export const AllVariants: Story = {
   name: 'All variants',
   render: () => ({
-    imports: [StatusPill],
+    moduleMetadata: { imports: [StatusPill] },
     template: `
       <div class="row">
         <au-status-pill status="critical">Critical</au-status-pill>
