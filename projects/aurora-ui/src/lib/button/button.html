@@ -1,0 +1,11 @@
+<button
+  class="au-btn au-btn--{{ variant() }}"
+  [type]="type()"
+  [disabled]="disabled()"
+  [attr.aria-label]="ariaLabel() ?? null"
+>
+  @if (icon(); as iconName) {
+    <au-icon [name]="iconName" [size]="16" />
+  }
+  <ng-content />
+</button>
