@@ -5,20 +5,20 @@ Meta: em ~8 semanas (6 a 8 h/semana), publicar a biblioteca **Aurora UI** no npm
 > Cópia do plano original no Claude. Marque as tarefas aqui com `[x]` conforme avançar.
 
 ## Fase 0 · Fundação (semana 1)
-- [ ] Criar o repositório público `aurora-ui` no GitHub, com README inicial em inglês
-- [ ] Gerar o workspace Angular com a biblioteca `aurora-ui` e o app `showcase`
-- [ ] Configurar ESLint, Prettier e Jest
-- [ ] Instalar e configurar o Storybook com o addon de acessibilidade (a11y)
-- [ ] Criar o GitHub Actions rodando lint, testes e build a cada push
+- [x] Criar o repositório público `aurora-ui` no GitHub, com README inicial em inglês
+- [x] Gerar o workspace Angular com a biblioteca `aurora-ui` e o app `showcase`
+- [x] Configurar ESLint, Prettier e Jest
+- [x] Instalar e configurar o Storybook com o addon de acessibilidade (a11y)
+- [x] Criar o GitHub Actions rodando lint, testes e build a cada push
 
 Pronto quando: o CI fica verde e o Storybook abre localmente.
 
 ## Fase 1 · Tokens e temas (semana 2)
-- [ ] Usar `design/tokens/` dentro da biblioteca
-- [ ] Script que gera `tokens.css` (variáveis CSS para tema claro e escuro)
-- [ ] `ThemeService` com Signal para alternar `data-theme` e lembrar a escolha
-- [ ] Carregar as fontes Bricolage Grotesque, Figtree e IBM Plex Mono
-- [ ] Páginas no Storybook: Cores, Tipografia, Espaçamento
+- [x] Usar `design/tokens/` dentro da biblioteca
+- [x] Script que gera `tokens.css` (variáveis CSS para tema claro e escuro)
+- [x] `ThemeService` com Signal para alternar `data-theme` e lembrar a escolha
+- [x] Carregar as fontes Bricolage Grotesque, Figtree e IBM Plex Mono
+- [x] Páginas no Storybook: Cores, Tipografia, Espaçamento
 
 Pronto quando: trocar o tema muda todas as cores do Storybook.
 
