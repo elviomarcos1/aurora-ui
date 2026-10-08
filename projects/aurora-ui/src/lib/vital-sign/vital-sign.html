@@ -1,0 +1,22 @@
+<div class="au-card au-vital" [class.au-vital--critical]="isCritical()">
+  <div class="au-vital__head">
+    <span class="au-vital__label">{{ label() }}</span>
+    <au-status-pill [status]="status()">{{ resolvedStatusLabel() }}</au-status-pill>
+  </div>
+  <div>
+    <span class="au-vital__value">{{ value() }}</span>
+    @if (unit(); as unit) {
+      <span class="au-vital__unit">{{ unit }}</span>
+    }
+  </div>
+  @if (sparkline(); as spark) {
+    <svg class="au-vital__spark" viewBox="0 0 240 36" preserveAspectRatio="none" aria-hidden="true">
+      <path class="area" [attr.d]="spark.areaPath" />
+      <path class="line" [attr.d]="spark.linePath" />
+      <circle [attr.cx]="spark.cx" [attr.cy]="spark.cy" r="3" />
+    </svg>
+  }
+  @if (resolvedRangeText(); as rangeText) {
+    <span class="au-vital__range">{{ rangeText }}</span>
+  }
+</div>

@@ -10,3 +10,6 @@ export * from './lib/status-pill/status-pill';
 export * from './lib/text-field/text-field';
 export * from './lib/alert-banner/alert-banner';
 export * from './lib/occupancy-meter/occupancy-meter';
+export * from './lib/vital-sign/vital-sign';
+export * from './lib/vital-sign/sparkline';
+export * from './lib/bed-card/bed-card';

@@ -1,0 +1,22 @@
+<div class="au-card au-bed" [class]="variantClass()">
+  <div class="au-bed__top">
+    <span class="au-bed__code">{{ code() }}</span>
+    @if (!free() && status(); as status) {
+      <au-status-pill [status]="status">{{ statusLabel() }}</au-status-pill>
+    }
+  </div>
+  <span class="au-bed__name">{{ name() }}</span>
+  @if (diagnosis() || dayOfStay() || nextEvent()) {
+    <div class="au-bed__meta">
+      @if (diagnosis(); as diagnosis) {
+        <span>{{ diagnosis }}</span>
+      }
+      @if (dayOfStay(); as dayOfStay) {
+        <span class="au-num">{{ dayOfStay }}</span>
+      }
+      @if (nextEvent(); as nextEvent) {
+        <span>{{ nextEvent }}</span>
+      }
+    </div>
+  }
+</div>

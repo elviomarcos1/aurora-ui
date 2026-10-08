@@ -38,9 +38,9 @@ Pronto quando: os 3 passam na Definição de Pronto (CLAUDE.md).
 Pronto quando: um formulário de exemplo valida e mostra erros acessíveis.
 
 ## Fase 4 · Componentes clínicos (semanas 5 e 6)
-- [ ] VitalSign com sparkline SVG, valor por Signal e estado fora da faixa
-- [ ] BedCard com faixa de status, leito livre e dados resumidos
-- [ ] Serviço de dados fictícios com RxJS (`interval`) simulando sinais vitais ao vivo
+- [x] VitalSign com sparkline SVG, valor por Signal e estado fora da faixa
+- [x] BedCard com faixa de status, leito livre e dados resumidos
+- [x] Serviço de dados fictícios com RxJS (`interval`) simulando sinais vitais ao vivo
 
 Pronto quando: um VitalSign atualiza sozinho no Storybook sem os números "pularem".
 
