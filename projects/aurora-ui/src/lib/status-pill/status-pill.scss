@@ -1,0 +1,43 @@
+:host {
+  display: inline-flex;
+}
+
+.au-pill {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 8px;
+  border-radius: var(--radius-pill);
+  font: 600 12px/18px var(--font-sans);
+}
+
+.au-pill svg {
+  width: 10px;
+  height: 10px;
+  flex: none;
+}
+
+.au-pill svg * {
+  fill: currentColor;
+}
+
+.au-pill--critical {
+  background: var(--critical-soft);
+  color: var(--critical);
+}
+
+.au-pill--warning {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.au-pill--stable {
+  background: var(--stable-soft);
+  color: var(--stable);
+}
+
+.au-pill--info {
+  background: var(--info-soft);
+  color: var(--info);
+}

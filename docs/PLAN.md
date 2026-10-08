@@ -25,8 +25,8 @@ Pronto quando: trocar o tema muda todas as cores do Storybook.
 ## Fase 2 · Componentes base (semana 3)
 - [x] Icon (39 ícones curados, SVG inline — ver decisão sobre `lucide-angular` abaixo)
 - [x] Button: primary, secondary, ghost, danger, só ícone, desabilitado
-- [ ] StatusPill: critical, warning, stable, info
-- [ ] Para cada um: teste Jest, story e zero erros de acessibilidade
+- [x] StatusPill: critical, warning, stable, info
+- [x] Para cada um: teste Jest, story e zero erros de acessibilidade
 
 Pronto quando: os 3 passam na Definição de Pronto (CLAUDE.md).
 
