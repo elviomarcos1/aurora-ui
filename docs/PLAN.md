@@ -23,7 +23,7 @@ Pronto quando: o CI fica verde e o Storybook abre localmente.
 Pronto quando: trocar o tema muda todas as cores do Storybook.
 
 ## Fase 2 · Componentes base (semana 3)
-- [ ] Icon (`lucide-angular`, 39 ícones selecionados)
+- [x] Icon (39 ícones curados, SVG inline — ver decisão sobre `lucide-angular` abaixo)
 - [ ] Button: primary, secondary, ghost, danger, só ícone, desabilitado
 - [ ] StatusPill: critical, warning, stable, info
 - [ ] Para cada um: teste Jest, story e zero erros de acessibilidade
