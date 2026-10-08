@@ -1,0 +1,21 @@
+<div class="au-alert au-alert--{{ variant() }}" [attr.role]="role()">
+  <svg viewBox="0 0 10 10" aria-hidden="true">
+    @switch (variant()) {
+      @case ('critical') {
+        <path d="M5 0.5 9.6 9.3H0.4z" />
+      }
+      @case ('info') {
+        <rect x="1" y="1" width="8" height="8" rx="1.5" />
+      }
+    }
+  </svg>
+  <div class="au-alert__body">
+    <div class="au-alert__title">{{ title() }}</div>
+    @if (text(); as text) {
+      <div class="au-alert__text">{{ text }}</div>
+    }
+  </div>
+  @if (acknowledgeLabel(); as label) {
+    <au-button variant="danger" (click)="acknowledge.emit()">{{ label }}</au-button>
+  }
+</div>

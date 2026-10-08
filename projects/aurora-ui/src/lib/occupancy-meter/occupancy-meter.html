@@ -1,0 +1,20 @@
+<div
+  class="au-meter"
+  [class.au-meter--warning]="band() === 'warning'"
+  [class.au-meter--critical]="band() === 'critical'"
+>
+  <div class="au-meter__head">
+    <span>{{ label() }}</span>
+    <span class="au-meter__count">{{ occupied() }}/{{ capacity() }}</span>
+  </div>
+  <div
+    class="au-meter__track"
+    role="meter"
+    [attr.aria-valuenow]="percent()"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    [attr.aria-label]="accessibleLabel()"
+  >
+    <div class="au-meter__fill" [style.width.%]="percent()"></div>
+  </div>
+</div>

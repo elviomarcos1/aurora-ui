@@ -31,9 +31,9 @@ Pronto quando: trocar o tema muda todas as cores do Storybook.
 Pronto quando: os 3 passam na Definição de Pronto (CLAUDE.md).
 
 ## Fase 3 · Formulários e feedback (semana 4)
-- [ ] TextField com Reactive Forms (`ControlValueAccessor`), estados de ajuda e erro
-- [ ] AlertBanner: critical e info, com ação de confirmar
-- [ ] OccupancyMeter: três faixas de ocupação e `role="meter"`
+- [x] TextField com Reactive Forms (`ControlValueAccessor`), estados de ajuda e erro
+- [x] AlertBanner: critical e info, com ação de confirmar
+- [x] OccupancyMeter: três faixas de ocupação e `role="meter"`
 
 Pronto quando: um formulário de exemplo valida e mostra erros acessíveis.
 

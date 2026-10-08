@@ -1,0 +1,19 @@
+<div class="au-field" [class.au-field--error]="!!errorText()">
+  <label [for]="fieldId">{{ label() }}</label>
+  <input
+    [id]="fieldId"
+    [type]="type()"
+    [value]="value()"
+    [placeholder]="placeholder() ?? ''"
+    [disabled]="disabled()"
+    [attr.aria-invalid]="errorText() ? 'true' : null"
+    [attr.aria-describedby]="describedBy()"
+    (input)="handleInput($any($event.target).value)"
+    (blur)="onTouched()"
+  />
+  @if (errorText(); as error) {
+    <span class="au-field__help" [id]="errorId">{{ error }}</span>
+  } @else if (helpText(); as help) {
+    <span class="au-field__help" [id]="helpId">{{ help }}</span>
+  }
+</div>

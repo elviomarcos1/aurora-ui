@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+.au-field {
+  display: grid;
+  gap: 6px;
+}
+
+.au-field label {
+  font: 600 13px/18px var(--font-sans);
+  color: var(--ink);
+}
+
+.au-field input {
+  font: 400 15px/22px var(--font-sans);
+  color: var(--ink);
+  background: var(--surface-1);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.au-field input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.au-field input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.au-field__help {
+  font: 400 13px/18px var(--font-sans);
+  color: var(--ink-muted);
+}
+
+.au-field--error input {
+  border-color: var(--critical);
+}
+
+.au-field--error .au-field__help {
+  color: var(--critical);
+}
