@@ -1,0 +1,66 @@
+<app-site-header />
+
+<main>
+  <section class="board-head">
+    <div class="board-head__title">
+      <h1>Ward 4B · Cardiology</h1>
+      <p>Live occupancy board — built only from Aurora UI components.</p>
+    </div>
+    <au-occupancy-meter
+      label="Ward 4B"
+      [occupied]="occupied()"
+      [capacity]="capacity"
+    />
+  </section>
+
+  <section class="alert" aria-label="Active alerts">
+    <au-alert-banner
+      variant="critical"
+      title="SpO2 87% · Bed 4B-01"
+      text="Below 90% for 2 minutes. Nurse on duty notified at 14:32."
+      [acknowledgeLabel]="alertAcknowledged() ? 'Acknowledged' : 'Acknowledge'"
+      (acknowledge)="alertAcknowledged.set(true)"
+    />
+  </section>
+
+  <section class="vitals" aria-label="Live vitals, Bed 4B-01">
+    <h2 class="vitals__title">Bed 4B-01 · R. Nakamura, 72</h2>
+    <div class="vitals__row">
+      <au-vital-sign
+        label="SpO2"
+        [value]="spo2().value"
+        unit="%"
+        status="critical"
+        rangeText="Below 90% for 2 min"
+        [history]="spo2().history"
+      />
+      <au-vital-sign
+        label="Heart rate"
+        [value]="heartRate().value"
+        unit="bpm"
+        status="warning"
+        [range]="[60, 100]"
+        [history]="heartRate().history"
+      />
+    </div>
+  </section>
+
+  <section class="beds" aria-label="Ward 4B beds">
+    <div class="beds__grid">
+      @for (bed of beds; track bed.code) {
+        <au-bed-card
+          [code]="bed.code"
+          [name]="bed.name"
+          [free]="bed.free ?? false"
+          [status]="bed.status"
+          [statusLabel]="bed.statusLabel"
+          [diagnosis]="bed.diagnosis"
+          [dayOfStay]="bed.dayOfStay"
+          [nextEvent]="bed.nextEvent"
+        />
+      }
+    </div>
+  </section>
+</main>
+
+<app-site-footer />
