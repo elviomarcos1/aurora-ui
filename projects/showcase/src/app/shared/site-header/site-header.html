@@ -1,6 +1,6 @@
 <header class="site-header">
   <a class="site-header__logo" routerLink="/">
-    <img src="assets/brand/aurora-wordmark.svg" alt="Aurora Hospital" height="32" />
+    <img src="assets/brand/aurora-wordmark.svg" alt="Aurora Hospital" width="130" height="32" />
   </a>
   <nav class="site-header__nav">
     <a routerLink="/demo" routerLinkActive="is-active">Demo</a>
@@ -8,7 +8,46 @@
     <a routerLink="/case-study" routerLinkActive="is-active">Case study</a>
     <a href="https://github.com/elviomarcos1/aurora-ui" target="_blank" rel="noopener">GitHub</a>
     <a href="https://github.com/elviomarcos1/aurora-ui/tree/main/storybook-static" target="_blank" rel="noopener">Storybook</a>
-    <au-button variant="ghost" (click)="themeService.toggleTheme()">
+    <au-button variant="secondary" (click)="themeService.toggleTheme()">
+      @if (themeService.theme() === 'dark') {
+        <svg
+          class="site-header__theme-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      } @else {
+        <svg
+          class="site-header__theme-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+      }
       {{ themeService.theme() === 'dark' ? 'Light mode' : 'Dark mode' }}
     </au-button>
   </nav>

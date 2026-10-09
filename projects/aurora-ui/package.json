@@ -1,11 +1,40 @@
 {
   "name": "@aurora-hospital/ui",
-  "version": "0.0.1",
-  "description": "Accessible Angular design system for real-time hospital dashboards.",
+  "version": "0.1.0",
+  "description": "Accessible Angular design system for real-time hospital dashboards: bed occupancy, patient status, vital signs and surgical schedules, readable at a glance.",
   "type": "module",
+  "license": "MIT",
+  "author": "Elvio Marcos Faria Junior",
+  "keywords": [
+    "angular",
+    "angular-library",
+    "design-system",
+    "component-library",
+    "ui-components",
+    "accessibility",
+    "healthcare",
+    "dashboard"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elviomarcos1/aurora-ui.git",
+    "directory": "projects/aurora-ui"
+  },
+  "homepage": "https://github.com/elviomarcos1/aurora-ui#readme",
+  "bugs": {
+    "url": "https://github.com/elviomarcos1/aurora-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./styles/*": "./styles/*"
+  },
   "peerDependencies": {
     "@angular/common": "^22.1.0",
-    "@angular/core": "^22.1.0"
+    "@angular/core": "^22.1.0",
+    "@angular/forms": "^22.1.0",
+    "@angular/platform-browser": "^22.1.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

@@ -16,6 +16,21 @@ An accessible Angular design system for real-time hospital dashboards: bed occup
 | Storybook | coming soon |
 | Showcase | coming soon |
 
+## Run locally
+
+```bash
+git clone https://github.com/elviomarcos1/aurora-ui.git
+cd aurora-ui
+npm install
+
+npm start            # showcase at http://localhost:4200
+npm run storybook    # Storybook at http://localhost:6006
+
+npm test             # Jest, both projects
+npm run lint         # ESLint, both projects
+npm run build:lib    # builds the library into dist/aurora-ui
+```
+
 ## What's inside
 
 - **Design tokens** in light and dark themes, every text color pair WCAG AA: [`design/tokens/`](design/tokens)

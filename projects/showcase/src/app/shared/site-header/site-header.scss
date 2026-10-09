@@ -45,6 +45,11 @@
   }
 }
 
+.site-header__theme-icon {
+  flex: none;
+  display: block;
+}
+
 @media (max-width: 640px) {
   .site-header {
     padding: var(--space-4);

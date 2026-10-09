@@ -1,64 +1,84 @@
-# AuroraUi
+# @aurora-hospital/ui
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.0.
+Accessible Angular component library for real-time hospital dashboards: bed occupancy, patient status and vital signs, built to be readable at a glance.
 
-## Code scaffolding
+> **Portfolio project.** Aurora Hospital is a fictional brand created by Elvio Marcos Faria Junior, inspired by real-time dashboards he designed and built for a hospital in Brazil. All names, patients and data shown in the docs and demos are invented.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Source, Storybook and the live showcase: [github.com/elviomarcos1/aurora-ui](https://github.com/elviomarcos1/aurora-ui)
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Install
 
 ```bash
-ng generate --help
+npm install @aurora-hospital/ui
 ```
 
-## Building
+Requires Angular 22 or later, with these peer dependencies already in any Angular app: `@angular/core`, `@angular/common`, `@angular/forms`, `@angular/platform-browser`.
 
-To build the library, run:
+## Setup
 
-```bash
-ng build aurora-ui
+Import the design tokens once, globally, in your app's styles:
+
+```scss
+@use '@aurora-hospital/ui/styles/tokens-base.css';
+@use '@aurora-hospital/ui/styles/tokens-light.css';
+@use '@aurora-hospital/ui/styles/tokens-dark.css';
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+Every component reads these as CSS custom properties, so colors switch when `<html>` gets `data-theme="dark"`. `ThemeService` does that for you and remembers the choice:
 
-### Publishing the Library
+```ts
+import { Component, inject } from '@angular/core';
+import { ThemeService } from '@aurora-hospital/ui';
 
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/aurora-ui
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+@Component({ /* ... */ })
+export class AppComponent {
+  // Injected so its effect runs and keeps `data-theme` in sync from app start.
+  private readonly theme = inject(ThemeService);
+}
 ```
 
-## Running end-to-end tests
+## Usage
 
-For end-to-end (e2e) testing, run:
+Every component is standalone — import only what you use:
 
-```bash
-ng e2e
+```ts
+import { Component } from '@angular/core';
+import { BedCard } from '@aurora-hospital/ui';
+
+@Component({
+  selector: 'app-ward',
+  imports: [BedCard],
+  template: `
+    <au-bed-card
+      code="4B-12"
+      name="M. Oliveira, 67"
+      status="critical"
+      statusLabel="Critical"
+      diagnosis="Post-op cardiac"
+      dayOfStay="Day 2"
+      nextEvent="Visit due 15:00"
+    />
+  `,
+})
+export class Ward {}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## What's inside
 
-## Additional Resources
+| Component | What it does |
+| --- | --- |
+| `Icon` | 39 curated Lucide icons, inlined — no `lucide-angular` dependency |
+| `Button` | primary, secondary, ghost, danger, icon-only, disabled |
+| `StatusPill` | critical, warning, stable, info — color, icon shape and word, never color alone |
+| `TextField` | labelled input, `ControlValueAccessor`, drops into Reactive Forms |
+| `AlertBanner` | critical and info alerts with an optional acknowledge action |
+| `OccupancyMeter` | ward occupancy as a count and a bar, `role="meter"` |
+| `VitalSign` | a live vital with a trend sparkline, tabular numerals so digits never jump |
+| `BedCard` | one bed on the occupancy board, with a free-bed state |
+| `ThemeService` | a signal-backed light/dark theme switch |
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Every component is standalone, `OnPush`, keyboard-accessible, and documented in Storybook with an accessibility (a11y) check.
+
+## License
+
+MIT © Elvio Marcos Faria Junior

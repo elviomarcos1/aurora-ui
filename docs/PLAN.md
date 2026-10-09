@@ -45,10 +45,10 @@ Pronto quando: um formulário de exemplo valida e mostra erros acessíveis.
 Pronto quando: um VitalSign atualiza sozinho no Storybook sem os números "pularem".
 
 ## Fase 5 · Vitrine (semana 7)
-- [ ] Home com a identidade Aurora, componentes reais e trechos de código
-- [ ] Playground de tema: cor principal, arredondamento, densidade, claro/escuro, ao vivo
-- [ ] Tela demo: painel de ocupação da Ala 4B só com componentes da biblioteca
-- [ ] Página "Case study" em inglês: problema real, decisões de design, arquitetura, resultado
+- [x] Home com a identidade Aurora, componentes reais e trechos de código
+- [x] Playground de tema: cor principal, arredondamento, densidade, claro/escuro, ao vivo
+- [x] Tela demo: painel de ocupação da Ala 4B só com componentes da biblioteca
+- [x] Página "Case study" em inglês: problema real, decisões de design, arquitetura, resultado
 
 Pronto quando: alguém entende o projeto em 30 segundos na home.
 

@@ -3,5 +3,12 @@
   "dest": "../../dist/aurora-ui",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [
+    {
+      "glob": "*.css",
+      "input": "src/styles",
+      "output": "styles"
+    }
+  ]
 }
