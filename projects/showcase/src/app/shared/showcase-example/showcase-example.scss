@@ -1,0 +1,36 @@
+.showcase-example {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.showcase-example__title {
+  margin: 0;
+  padding: var(--space-4) var(--space-6) 0;
+  font: 600 13px/20px var(--font-sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.showcase-example__demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.showcase-example__code {
+  margin: 0;
+  padding: var(--space-4) var(--space-6);
+  background: var(--surface-0);
+  border-top: 1px solid var(--line);
+  font: 13px/20px var(--font-mono);
+  color: var(--ink-muted);
+  overflow-x: auto;
+  white-space: pre;
+}

@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "aacabdb6-9bd3-4505-81d6-040af799ef3a"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -92,6 +93,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/showcase/public"
+              },
+              {
+                "glob": "aurora-*.svg",
+                "input": "design",
+                "output": "assets/brand"
               }
             ],
             "styles": ["projects/showcase/src/styles.scss"]

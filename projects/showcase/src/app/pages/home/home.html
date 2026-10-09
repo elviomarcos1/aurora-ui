@@ -1,0 +1,104 @@
+<header class="home-header">
+  <img class="home-header__logo" src="assets/brand/aurora-wordmark.svg" alt="Aurora Hospital" height="32" />
+  <nav class="home-header__nav">
+    <a href="https://github.com/elviomarcos1/aurora-ui" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/elviomarcos1/aurora-ui/tree/main/storybook-static" target="_blank" rel="noopener">Storybook</a>
+    <au-button variant="ghost" (click)="themeService.toggleTheme()">
+      {{ themeService.theme() === 'dark' ? 'Light mode' : 'Dark mode' }}
+    </au-button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="hero__eyebrow">Angular component library · Portfolio project</p>
+    <h1 class="hero__title">A design system for the moments that can't wait</h1>
+    <p class="hero__subtitle">
+      Aurora UI is an accessible Angular library for real-time hospital dashboards —
+      bed occupancy, patient status and vital signs, readable at a glance. It is
+      inspired by the dashboards Elvio Marcos Faria Junior designed and built for a
+      hospital in Brazil. Aurora Hospital is a fictional brand; every name and
+      reading on this page is invented.
+    </p>
+    <div class="hero__actions">
+      <a class="hero__cta hero__cta--primary" href="https://github.com/elviomarcos1/aurora-ui" target="_blank" rel="noopener">
+        View on GitHub
+      </a>
+      <a class="hero__cta hero__cta--secondary" href="https://github.com/elviomarcos1/aurora-ui/blob/main/docs/design-system/README.md" target="_blank" rel="noopener">
+        Read the brand book
+      </a>
+    </div>
+  </section>
+
+  <section class="components" aria-labelledby="components-heading">
+    <h2 id="components-heading" class="components__title">Built from these components</h2>
+    <p class="components__subtitle">
+      Every example below renders the real Angular component, not a mock-up.
+    </p>
+
+    <div class="components__grid">
+      <app-showcase-example title="StatusPill" [code]="statusPillCode">
+        <au-status-pill status="critical">Critical</au-status-pill>
+        <au-status-pill status="warning">Observation</au-status-pill>
+        <au-status-pill status="stable">Stable</au-status-pill>
+        <au-status-pill status="info">Info</au-status-pill>
+      </app-showcase-example>
+
+      <app-showcase-example title="Button" [code]="buttonCode">
+        <au-button variant="primary">Admit patient</au-button>
+        <au-button variant="secondary">View chart</au-button>
+        <au-button variant="danger">Discharge</au-button>
+      </app-showcase-example>
+
+      <app-showcase-example title="BedCard" [code]="bedCardCode">
+        <au-bed-card
+          code="4B-12"
+          name="M. Oliveira, 67"
+          status="critical"
+          statusLabel="Critical"
+          diagnosis="Post-op cardiac"
+          dayOfStay="Day 2"
+          nextEvent="Visit due 15:00"
+        />
+        <au-bed-card code="4B-13" name="Ready for admission" [free]="true" />
+      </app-showcase-example>
+
+      <app-showcase-example title="VitalSign" [code]="vitalSignCode">
+        <au-vital-sign
+          label="Heart rate"
+          [value]="78"
+          unit="bpm"
+          status="stable"
+          [range]="[60, 100]"
+          [history]="heartRateHistory"
+        />
+      </app-showcase-example>
+
+      <app-showcase-example title="AlertBanner" [code]="alertBannerCode">
+        <au-alert-banner
+          variant="critical"
+          title="SpO2 87% · Bed 4B-12"
+          text="Below 90% for 2 minutes. Nurse on duty notified at 14:32."
+          [acknowledgeLabel]="alertAcknowledged() ? 'Acknowledged' : 'Acknowledge'"
+          (acknowledge)="alertAcknowledged.set(true)"
+        />
+      </app-showcase-example>
+
+      <app-showcase-example title="OccupancyMeter" [code]="occupancyMeterCode">
+        <au-occupancy-meter label="Ward 4B · Cardiology" [occupied]="21" [capacity]="24" />
+      </app-showcase-example>
+    </div>
+  </section>
+</main>
+
+<footer class="home-footer">
+  <p>
+    Built by
+    <a href="https://github.com/elviomarcos1" target="_blank" rel="noopener">Elvio Marcos Faria Junior</a>
+    ·
+    <a href="https://www.linkedin.com/in/elviomarcos1" target="_blank" rel="noopener">LinkedIn</a>
+  </p>
+  <p class="home-footer__disclaimer">
+    Aurora Hospital is a fictional brand. All data shown is invented.
+  </p>
+</footer>

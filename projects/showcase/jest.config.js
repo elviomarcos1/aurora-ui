@@ -8,4 +8,7 @@ export default {
   displayName: 'showcase',
   rootDir: '.',
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  moduleNameMapper: {
+    '^@aurora-hospital/ui$': '<rootDir>/../../dist/aurora-ui/fesm2022/aurora-hospital-ui.mjs',
+  },
 };
