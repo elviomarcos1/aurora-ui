@@ -3,5 +3,40 @@
   <div class="showcase-example__demo">
     <ng-content />
   </div>
-  <pre class="showcase-example__code"><code>{{ code() }}</code></pre>
+  <div class="showcase-example__code-wrap">
+    <div class="showcase-example__copy-dock">
+      <button
+        type="button"
+        class="showcase-example__copy"
+        [attr.aria-label]="copied() ? 'Copied' : 'Copy code'"
+        (click)="copyCode()"
+      >
+        @if (copied()) {
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M20 6L9 17l-5-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        } @else {
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+            <path
+              d="M5 15V5a2 2 0 0 1 2-2h10"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        }
+        <span class="showcase-example__copy-label">{{ copied() ? 'Copied' : 'Copy' }}</span>
+      </button>
+    </div>
+    <pre class="showcase-example__code"><code>{{ code() }}</code></pre>
+  </div>
 </article>

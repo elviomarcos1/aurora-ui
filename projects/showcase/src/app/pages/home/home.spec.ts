@@ -37,7 +37,7 @@ describe('Home', () => {
       'AlertBanner',
       'OccupancyMeter',
     ]) {
-      expect(screen.getByText(title)).toBeInTheDocument();
+      expect(screen.getByRole('tab', { name: title })).toBeInTheDocument();
     }
   });
 
@@ -53,6 +53,9 @@ describe('Home', () => {
 
   it('acknowledges the demo alert banner on click', async () => {
     await render(Home, { providers });
+
+    const alertBannerTab = screen.getByRole('tab', { name: 'AlertBanner' });
+    await userEvent.click(alertBannerTab);
 
     const acknowledge = screen.getByRole('button', { name: 'Acknowledge' });
     await userEvent.click(acknowledge);

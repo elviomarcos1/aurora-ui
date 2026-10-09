@@ -1,10 +1,27 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  afterNextRender,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AlertBanner, BedCard, Button, OccupancyMeter, StatusPill, VitalSign } from '@aurora-hospital/ui';
 
 import { ShowcaseExample } from '../../shared/showcase-example/showcase-example';
 import { SiteFooter } from '../../shared/site-footer/site-footer';
 import { SiteHeader } from '../../shared/site-header/site-header';
+
+/** Number of component demos in the "Built from these components" carousel. */
+const COMPONENT_SLIDE_COUNT = 6;
+
+/** How long each slide stays on screen before autoplay advances, in milliseconds. */
+const SLIDE_DWELL_MS = 6000;
+
+/** How often the progress bar updates while a slide is on screen, in milliseconds. */
+const SLIDE_TICK_MS = 100;
 
 /**
  * The showcase home page: brand identity, a live tour of every Aurora UI
@@ -33,6 +50,61 @@ export class Home {
   protected readonly alertAcknowledged = signal(false);
 
   protected readonly heartRateHistory = [74, 76, 75, 78, 82, 79, 78];
+
+  // --- "Built from these components" fan ---------------------------------
+  // One panel is expanded at a time; the rest collapse to a labeled tab.
+  // A plain index-driven state local to this page: it only ever shows the
+  // six demos below, so it does not need to be a reusable component.
+
+  protected readonly activeSlide = signal(0);
+
+  /** How far through the current slide's dwell time autoplay is, from 0 to 1. */
+  protected readonly progress = signal(0);
+
+  private readonly slideHovered = signal(false);
+  private readonly slideFocused = signal(false);
+  private readonly prefersReducedMotion =
+    typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  protected readonly isCarouselPlaying = computed(
+    () => !this.slideHovered() && !this.slideFocused() && !this.prefersReducedMotion,
+  );
+
+  constructor() {
+    const destroyRef = inject(DestroyRef);
+
+    afterNextRender(() => {
+      const timer = setInterval(() => {
+        if (!this.isCarouselPlaying()) return;
+
+        const nextProgress = this.progress() + SLIDE_TICK_MS / SLIDE_DWELL_MS;
+        if (nextProgress >= 1) {
+          this.setActiveSlide((this.activeSlide() + 1) % COMPONENT_SLIDE_COUNT);
+        } else {
+          this.progress.set(nextProgress);
+        }
+      }, SLIDE_TICK_MS);
+
+      destroyRef.onDestroy(() => clearInterval(timer));
+    });
+  }
+
+  protected goToSlide(index: number): void {
+    this.setActiveSlide(index);
+  }
+
+  protected setSlideHovered(hovered: boolean): void {
+    this.slideHovered.set(hovered);
+  }
+
+  protected setSlideFocused(focused: boolean): void {
+    this.slideFocused.set(focused);
+  }
+
+  private setActiveSlide(index: number): void {
+    this.activeSlide.set(index);
+    this.progress.set(0);
+  }
 
   protected readonly statusPillCode = `<au-status-pill status="critical">Critical</au-status-pill>
 <au-status-pill status="warning">Observation</au-status-pill>

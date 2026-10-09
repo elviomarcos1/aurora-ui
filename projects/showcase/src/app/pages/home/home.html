@@ -27,57 +27,180 @@
       Every example below renders the real Angular component, not a mock-up.
     </p>
 
-    <div class="components__grid">
-      <app-showcase-example title="StatusPill" [code]="statusPillCode">
-        <au-status-pill status="critical">Critical</au-status-pill>
-        <au-status-pill status="warning">Observation</au-status-pill>
-        <au-status-pill status="stable">Stable</au-status-pill>
-        <au-status-pill status="info">Info</au-status-pill>
-      </app-showcase-example>
+    <div
+      class="components__showcase"
+      (mouseenter)="setSlideHovered(true)"
+      (mouseleave)="setSlideHovered(false)"
+      (focusin)="setSlideFocused(true)"
+      (focusout)="setSlideFocused(false)"
+    >
+      <div
+        class="components__menu"
+        role="tablist"
+        aria-orientation="vertical"
+        aria-label="Component showcase, auto-playing"
+      >
+        <button
+          type="button"
+          id="components-tab-0"
+          class="components__menu-item"
+          [class.components__menu-item--active]="activeSlide() === 0"
+          role="tab"
+          [attr.aria-selected]="activeSlide() === 0"
+          aria-controls="components-panel"
+          (click)="goToSlide(0)"
+        >
+          <span class="components__menu-item-label">StatusPill</span>
+          @if (activeSlide() === 0) {
+            <span class="components__menu-item-progress" aria-hidden="true" [style.width.%]="progress() * 100"></span>
+          }
+        </button>
 
-      <app-showcase-example title="Button" [code]="buttonCode">
-        <au-button variant="primary">Admit patient</au-button>
-        <au-button variant="secondary">View chart</au-button>
-        <au-button variant="danger">Discharge</au-button>
-      </app-showcase-example>
+        <button
+          type="button"
+          id="components-tab-1"
+          class="components__menu-item"
+          [class.components__menu-item--active]="activeSlide() === 1"
+          role="tab"
+          [attr.aria-selected]="activeSlide() === 1"
+          aria-controls="components-panel"
+          (click)="goToSlide(1)"
+        >
+          <span class="components__menu-item-label">Button</span>
+          @if (activeSlide() === 1) {
+            <span class="components__menu-item-progress" aria-hidden="true" [style.width.%]="progress() * 100"></span>
+          }
+        </button>
 
-      <app-showcase-example title="BedCard" [code]="bedCardCode">
-        <au-bed-card
-          code="4B-12"
-          name="M. Oliveira, 67"
-          status="critical"
-          statusLabel="Critical"
-          diagnosis="Post-op cardiac"
-          dayOfStay="Day 2"
-          nextEvent="Visit due 15:00"
-        />
-        <au-bed-card code="4B-13" name="Ready for admission" [free]="true" />
-      </app-showcase-example>
+        <button
+          type="button"
+          id="components-tab-2"
+          class="components__menu-item"
+          [class.components__menu-item--active]="activeSlide() === 2"
+          role="tab"
+          [attr.aria-selected]="activeSlide() === 2"
+          aria-controls="components-panel"
+          (click)="goToSlide(2)"
+        >
+          <span class="components__menu-item-label">BedCard</span>
+          @if (activeSlide() === 2) {
+            <span class="components__menu-item-progress" aria-hidden="true" [style.width.%]="progress() * 100"></span>
+          }
+        </button>
 
-      <app-showcase-example title="VitalSign" [code]="vitalSignCode">
-        <au-vital-sign
-          label="Heart rate"
-          [value]="78"
-          unit="bpm"
-          status="stable"
-          [range]="[60, 100]"
-          [history]="heartRateHistory"
-        />
-      </app-showcase-example>
+        <button
+          type="button"
+          id="components-tab-3"
+          class="components__menu-item"
+          [class.components__menu-item--active]="activeSlide() === 3"
+          role="tab"
+          [attr.aria-selected]="activeSlide() === 3"
+          aria-controls="components-panel"
+          (click)="goToSlide(3)"
+        >
+          <span class="components__menu-item-label">VitalSign</span>
+          @if (activeSlide() === 3) {
+            <span class="components__menu-item-progress" aria-hidden="true" [style.width.%]="progress() * 100"></span>
+          }
+        </button>
 
-      <app-showcase-example title="AlertBanner" [code]="alertBannerCode">
-        <au-alert-banner
-          variant="critical"
-          title="SpO2 87% · Bed 4B-12"
-          text="Below 90% for 2 minutes. Nurse on duty notified at 14:32."
-          [acknowledgeLabel]="alertAcknowledged() ? 'Acknowledged' : 'Acknowledge'"
-          (acknowledge)="alertAcknowledged.set(true)"
-        />
-      </app-showcase-example>
+        <button
+          type="button"
+          id="components-tab-4"
+          class="components__menu-item"
+          [class.components__menu-item--active]="activeSlide() === 4"
+          role="tab"
+          [attr.aria-selected]="activeSlide() === 4"
+          aria-controls="components-panel"
+          (click)="goToSlide(4)"
+        >
+          <span class="components__menu-item-label">AlertBanner</span>
+          @if (activeSlide() === 4) {
+            <span class="components__menu-item-progress" aria-hidden="true" [style.width.%]="progress() * 100"></span>
+          }
+        </button>
 
-      <app-showcase-example title="OccupancyMeter" [code]="occupancyMeterCode">
-        <au-occupancy-meter label="Ward 4B · Cardiology" [occupied]="21" [capacity]="24" />
-      </app-showcase-example>
+        <button
+          type="button"
+          id="components-tab-5"
+          class="components__menu-item"
+          [class.components__menu-item--active]="activeSlide() === 5"
+          role="tab"
+          [attr.aria-selected]="activeSlide() === 5"
+          aria-controls="components-panel"
+          (click)="goToSlide(5)"
+        >
+          <span class="components__menu-item-label">OccupancyMeter</span>
+          @if (activeSlide() === 5) {
+            <span class="components__menu-item-progress" aria-hidden="true" [style.width.%]="progress() * 100"></span>
+          }
+        </button>
+      </div>
+
+      <div
+        class="components__content"
+        id="components-panel"
+        role="tabpanel"
+        [attr.aria-labelledby]="'components-tab-' + activeSlide()"
+      >
+        @if (activeSlide() === 0) {
+          <app-showcase-example title="StatusPill" [code]="statusPillCode">
+            <au-status-pill status="critical">Critical</au-status-pill>
+            <au-status-pill status="warning">Observation</au-status-pill>
+            <au-status-pill status="stable">Stable</au-status-pill>
+            <au-status-pill status="info">Info</au-status-pill>
+          </app-showcase-example>
+        }
+        @if (activeSlide() === 1) {
+          <app-showcase-example title="Button" [code]="buttonCode">
+            <au-button variant="primary">Admit patient</au-button>
+            <au-button variant="secondary">View chart</au-button>
+            <au-button variant="danger">Discharge</au-button>
+          </app-showcase-example>
+        }
+        @if (activeSlide() === 2) {
+          <app-showcase-example title="BedCard" [code]="bedCardCode">
+            <au-bed-card
+              code="4B-12"
+              name="M. Oliveira, 67"
+              status="critical"
+              statusLabel="Critical"
+              diagnosis="Post-op cardiac"
+              dayOfStay="Day 2"
+              nextEvent="Visit due 15:00"
+            />
+            <au-bed-card code="4B-13" name="Ready for admission" [free]="true" />
+          </app-showcase-example>
+        }
+        @if (activeSlide() === 3) {
+          <app-showcase-example title="VitalSign" [code]="vitalSignCode">
+            <au-vital-sign
+              label="Heart rate"
+              [value]="78"
+              unit="bpm"
+              status="stable"
+              [range]="[60, 100]"
+              [history]="heartRateHistory"
+            />
+          </app-showcase-example>
+        }
+        @if (activeSlide() === 4) {
+          <app-showcase-example title="AlertBanner" [code]="alertBannerCode">
+            <au-alert-banner
+              variant="critical"
+              title="SpO2 87% · Bed 4B-12"
+              text="Below 90% for 2 minutes. Nurse on duty notified at 14:32."
+              [acknowledgeLabel]="alertAcknowledged() ? 'Acknowledged' : 'Acknowledge'"
+              (acknowledge)="alertAcknowledged.set(true)"
+            />
+          </app-showcase-example>
+        }
+        @if (activeSlide() === 5) {
+          <app-showcase-example title="OccupancyMeter" [code]="occupancyMeterCode">
+            <au-occupancy-meter label="Ward 4B · Cardiology" [occupied]="21" [capacity]="24" />
+          </app-showcase-example>
+        }
+      </div>
     </div>
   </section>
 </main>
