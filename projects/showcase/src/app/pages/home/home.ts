@@ -1,15 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import {
-  AlertBanner,
-  BedCard,
-  Button,
-  OccupancyMeter,
-  StatusPill,
-  ThemeService,
-  VitalSign,
-} from '@aurora-hospital/ui';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AlertBanner, BedCard, Button, OccupancyMeter, StatusPill, VitalSign } from '@aurora-hospital/ui';
 
 import { ShowcaseExample } from '../../shared/showcase-example/showcase-example';
+import { SiteFooter } from '../../shared/site-footer/site-footer';
+import { SiteHeader } from '../../shared/site-header/site-header';
 
 /**
  * The showcase home page: brand identity, a live tour of every Aurora UI
@@ -24,15 +19,16 @@ import { ShowcaseExample } from '../../shared/showcase-example/showcase-example'
     OccupancyMeter,
     StatusPill,
     VitalSign,
+    RouterLink,
     ShowcaseExample,
+    SiteFooter,
+    SiteHeader,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
-  protected readonly themeService = inject(ThemeService);
-
   /** Tracks the demo AlertBanner so its acknowledge action does something visible. */
   protected readonly alertAcknowledged = signal(false);
 

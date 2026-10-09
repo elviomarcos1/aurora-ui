@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+.site-footer {
+  padding: var(--space-8);
+  text-align: center;
+  border-top: 1px solid var(--line);
+
+  p {
+    margin: 0 0 var(--space-2);
+    font: 400 14px/1.6 var(--font-sans);
+    color: var(--ink-muted);
+  }
+
+  a {
+    color: var(--brand);
+    font-weight: 600;
+  }
+}
+
+.site-footer__disclaimer {
+  font-size: 13px;
+}

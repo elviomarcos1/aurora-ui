@@ -1,0 +1,152 @@
+<app-site-header />
+
+<main>
+  <section class="intro">
+    <h1 class="intro__title">Theme playground</h1>
+    <p class="intro__subtitle">
+      Every control below overrides real Aurora UI tokens — primary color, corner
+      radius and density — on top of the real light/dark theme. The preview is
+      built from the same components used across this site, not a mock-up.
+    </p>
+  </section>
+
+  <section class="playground">
+    <div class="controls">
+      <div class="control">
+        <label class="control__label" for="primary-color">Primary color</label>
+        <div class="control__row">
+          <input
+            id="primary-color"
+            class="control__color"
+            type="color"
+            [value]="primaryColor()"
+            (input)="onColorInput($event)"
+          />
+          <span class="control__hex">{{ primaryColor() }}</span>
+          <au-button variant="ghost" (click)="resetColor()">Reset</au-button>
+        </div>
+      </div>
+
+      <div class="control">
+        <span class="control__label" id="radius-label">Corner radius</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="radius-label">
+          @for (option of radiusOptions; track option.value) {
+            <button
+              type="button"
+              role="radio"
+              [attr.aria-checked]="radiusPreset() === option.value"
+              [class.is-active]="radiusPreset() === option.value"
+              (click)="radiusPreset.set(option.value)"
+            >
+              {{ option.label }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="control">
+        <span class="control__label" id="density-label">Density</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="density-label">
+          @for (option of densityOptions; track option.value) {
+            <button
+              type="button"
+              role="radio"
+              [attr.aria-checked]="densityPreset() === option.value"
+              [class.is-active]="densityPreset() === option.value"
+              (click)="densityPreset.set(option.value)"
+            >
+              {{ option.label }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="control">
+        <span class="control__label" id="theme-label">Theme</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="theme-label">
+          <button
+            type="button"
+            role="radio"
+            [attr.aria-checked]="themeService.theme() === 'light'"
+            [class.is-active]="themeService.theme() === 'light'"
+            (click)="themeService.setTheme('light')"
+          >
+            Light
+          </button>
+          <button
+            type="button"
+            role="radio"
+            [attr.aria-checked]="themeService.theme() === 'dark'"
+            [class.is-active]="themeService.theme() === 'dark'"
+            (click)="themeService.setTheme('dark')"
+          >
+            Dark
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="preview"
+      [style.--brand]="palette().brand"
+      [style.--brand-strong]="palette().brandStrong"
+      [style.--brand-soft]="palette().brandSoft"
+      [style.--on-brand]="palette().onBrand"
+      [style.--focus-ring]="palette().brand"
+      [style.--radius-sm]="radiusValues().sm"
+      [style.--radius-md]="radiusValues().md"
+      [style.--radius-lg]="radiusValues().lg"
+      [style.--space-3]="densityValues().space3"
+      [style.--space-4]="densityValues().space4"
+    >
+      <au-alert-banner
+        variant="critical"
+        title="SpO2 87% · Bed 4B-12"
+        text="Below 90% for 2 minutes. Nurse on duty notified at 14:32."
+        [acknowledgeLabel]="alertAcknowledged() ? 'Acknowledged' : 'Acknowledge'"
+        (acknowledge)="alertAcknowledged.set(true)"
+      />
+
+      <au-occupancy-meter label="Ward 4B · Cardiology" [occupied]="21" [capacity]="24" />
+
+      <div class="preview__row">
+        <au-bed-card
+          code="4B-12"
+          name="M. Oliveira, 67"
+          status="critical"
+          statusLabel="Critical"
+          diagnosis="Post-op cardiac"
+          dayOfStay="Day 2"
+          nextEvent="Visit due 15:00"
+        />
+        <au-bed-card code="4B-13" name="Ready for admission" [free]="true" />
+      </div>
+
+      <au-vital-sign
+        label="Heart rate"
+        [value]="78"
+        unit="bpm"
+        status="stable"
+        [range]="[60, 100]"
+        [history]="heartRateHistory"
+      />
+
+      <div class="preview__row">
+        <au-button variant="primary">Admit patient</au-button>
+        <au-button variant="secondary">View chart</au-button>
+        <au-status-pill status="stable">Stable</au-status-pill>
+      </div>
+    </div>
+  </section>
+
+  <section class="tokens">
+    <h2 class="tokens__title">What actually changed</h2>
+    <p class="tokens__subtitle">
+      Nothing above is a special "playground" version of a component — these are
+      the same CSS custom properties every Aurora UI component already reads.
+    </p>
+    <pre class="tokens__code"><code>{{ tokensSnippet() }}</code></pre>
+  </section>
+</main>
+
+<app-site-footer />

@@ -1,13 +1,4 @@
-<header class="home-header">
-  <img class="home-header__logo" src="assets/brand/aurora-wordmark.svg" alt="Aurora Hospital" height="32" />
-  <nav class="home-header__nav">
-    <a href="https://github.com/elviomarcos1/aurora-ui" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://github.com/elviomarcos1/aurora-ui/tree/main/storybook-static" target="_blank" rel="noopener">Storybook</a>
-    <au-button variant="ghost" (click)="themeService.toggleTheme()">
-      {{ themeService.theme() === 'dark' ? 'Light mode' : 'Dark mode' }}
-    </au-button>
-  </nav>
-</header>
+<app-site-header />
 
 <main>
   <section class="hero">
@@ -21,11 +12,11 @@
       reading on this page is invented.
     </p>
     <div class="hero__actions">
-      <a class="hero__cta hero__cta--primary" href="https://github.com/elviomarcos1/aurora-ui" target="_blank" rel="noopener">
-        View on GitHub
+      <a class="hero__cta hero__cta--primary" routerLink="/playground">
+        Try the theme playground
       </a>
-      <a class="hero__cta hero__cta--secondary" href="https://github.com/elviomarcos1/aurora-ui/blob/main/docs/design-system/README.md" target="_blank" rel="noopener">
-        Read the brand book
+      <a class="hero__cta hero__cta--secondary" href="https://github.com/elviomarcos1/aurora-ui" target="_blank" rel="noopener">
+        View on GitHub
       </a>
     </div>
   </section>
@@ -91,14 +82,4 @@
   </section>
 </main>
 
-<footer class="home-footer">
-  <p>
-    Built by
-    <a href="https://github.com/elviomarcos1" target="_blank" rel="noopener">Elvio Marcos Faria Junior</a>
-    ·
-    <a href="https://www.linkedin.com/in/elviomarcos1" target="_blank" rel="noopener">LinkedIn</a>
-  </p>
-  <p class="home-footer__disclaimer">
-    Aurora Hospital is a fictional brand. All data shown is invented.
-  </p>
-</footer>
+<app-site-footer />

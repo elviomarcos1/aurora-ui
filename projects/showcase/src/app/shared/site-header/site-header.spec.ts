@@ -2,9 +2,7 @@ import { render, screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 import { provideRouter } from '@angular/router';
 
-import { Home } from './home';
-
-const providers = [provideRouter([])];
+import { SiteHeader } from './site-header';
 
 function mockMatchMedia(prefersDark = false): void {
   window.matchMedia = jest.fn().mockImplementation((query: string) => ({
@@ -15,48 +13,28 @@ function mockMatchMedia(prefersDark = false): void {
   })) as unknown as typeof window.matchMedia;
 }
 
-describe('Home', () => {
+describe('SiteHeader', () => {
   beforeEach(() => {
     localStorage.clear();
     document.documentElement.removeAttribute('data-theme');
     mockMatchMedia(false);
   });
 
-  it('renders the headline and every component example', async () => {
-    await render(Home, { providers });
+  it('renders the wordmark and navigation links', async () => {
+    await render(SiteHeader, { providers: [provideRouter([])] });
 
-    expect(
-      screen.getByRole('heading', { level: 1, name: /moments that can't wait/i }),
-    ).toBeInTheDocument();
-
-    for (const title of [
-      'StatusPill',
-      'Button',
-      'BedCard',
-      'VitalSign',
-      'AlertBanner',
-      'OccupancyMeter',
-    ]) {
-      expect(screen.getByText(title)).toBeInTheDocument();
-    }
+    expect(screen.getByAltText('Aurora Hospital')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Playground' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'GitHub' })).toBeInTheDocument();
   });
 
   it('toggles the theme and flips the toggle label', async () => {
-    await render(Home, { providers });
+    await render(SiteHeader, { providers: [provideRouter([])] });
 
     const toggle = screen.getByRole('button', { name: /dark mode/i });
     await userEvent.click(toggle);
 
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
     expect(screen.getByRole('button', { name: /light mode/i })).toBeInTheDocument();
-  });
-
-  it('acknowledges the demo alert banner on click', async () => {
-    await render(Home, { providers });
-
-    const acknowledge = screen.getByRole('button', { name: 'Acknowledge' });
-    await userEvent.click(acknowledge);
-
-    expect(screen.getByRole('button', { name: 'Acknowledged' })).toBeInTheDocument();
   });
 });
