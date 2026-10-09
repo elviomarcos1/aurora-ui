@@ -1,0 +1,44 @@
+<div class="prop-controls">
+  @for (control of controls(); track control.key) {
+    <div class="prop-controls__row">
+      <label class="prop-controls__label" [for]="'control-' + control.key">{{ control.label }}</label>
+
+      @if (control.kind === 'text') {
+        <input
+          [id]="'control-' + control.key"
+          type="text"
+          class="prop-controls__text"
+          [value]="control.value"
+          (input)="onTextInput(control, $event)"
+        />
+      } @else if (control.kind === 'number') {
+        <input
+          [id]="'control-' + control.key"
+          type="number"
+          class="prop-controls__text"
+          [value]="control.value"
+          (input)="onNumberInput(control, $event)"
+        />
+      } @else if (control.kind === 'select') {
+        <select
+          [id]="'control-' + control.key"
+          class="prop-controls__select"
+          [value]="control.value"
+          (change)="onSelectInput(control, $event)"
+        >
+          @for (option of control.options; track option) {
+            <option [value]="option">{{ option }}</option>
+          }
+        </select>
+      } @else if (control.kind === 'boolean') {
+        <input
+          [id]="'control-' + control.key"
+          type="checkbox"
+          class="prop-controls__checkbox"
+          [checked]="control.value"
+          (change)="onBooleanInput(control, $event)"
+        />
+      }
+    </div>
+  }
+</div>

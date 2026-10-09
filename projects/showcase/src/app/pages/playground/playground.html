@@ -2,150 +2,128 @@
 
 <main>
   <section class="intro">
-    <h1 class="intro__title">Theme playground</h1>
+    <h1 class="intro__title">Component playground</h1>
     <p class="intro__subtitle">
-      Every control below overrides real Aurora UI tokens — primary color, corner
-      radius and density — on top of the real light/dark theme. The preview is
-      built from the same components used across this site, not a mock-up.
+      Search or pick a component, edit its props with the controls below, and copy the exact
+      markup for what you see. Every control maps to a real Aurora UI input — nothing here is a
+      mock-up.
     </p>
   </section>
 
-  <section class="playground">
-    <div class="controls">
-      <div class="control">
-        <label class="control__label" for="primary-color">Primary color</label>
-        <div class="control__row">
-          <input
-            id="primary-color"
-            class="control__color"
-            type="color"
-            [value]="primaryColor()"
-            (input)="onColorInput($event)"
-          />
-          <span class="control__hex">{{ primaryColor() }}</span>
-          <au-button variant="ghost" (click)="resetColor()">Reset</au-button>
-        </div>
-      </div>
+  <section class="explorer" aria-label="Component explorer">
+    <div class="explorer__sidebar">
+      <input
+        type="search"
+        class="explorer__search"
+        placeholder="Search components"
+        aria-label="Search components"
+        [value]="searchQuery()"
+        (input)="onSearchInput($event)"
+      />
 
-      <div class="control">
-        <span class="control__label" id="radius-label">Corner radius</span>
-        <div class="segmented" role="radiogroup" aria-labelledby="radius-label">
-          @for (option of radiusOptions; track option.value) {
-            <button
-              type="button"
-              role="radio"
-              [attr.aria-checked]="radiusPreset() === option.value"
-              [class.is-active]="radiusPreset() === option.value"
-              (click)="radiusPreset.set(option.value)"
-            >
-              {{ option.label }}
-            </button>
-          }
-        </div>
-      </div>
-
-      <div class="control">
-        <span class="control__label" id="density-label">Density</span>
-        <div class="segmented" role="radiogroup" aria-labelledby="density-label">
-          @for (option of densityOptions; track option.value) {
-            <button
-              type="button"
-              role="radio"
-              [attr.aria-checked]="densityPreset() === option.value"
-              [class.is-active]="densityPreset() === option.value"
-              (click)="densityPreset.set(option.value)"
-            >
-              {{ option.label }}
-            </button>
-          }
-        </div>
-      </div>
-
-      <div class="control">
-        <span class="control__label" id="theme-label">Theme</span>
-        <div class="segmented" role="radiogroup" aria-labelledby="theme-label">
+      <div class="explorer__list" role="listbox" aria-label="Components">
+        @for (entry of filteredEntries(); track entry.key) {
           <button
             type="button"
-            role="radio"
-            [attr.aria-checked]="themeService.theme() === 'light'"
-            [class.is-active]="themeService.theme() === 'light'"
-            (click)="themeService.setTheme('light')"
+            role="option"
+            class="explorer__item"
+            [class.explorer__item--active]="activeKey() === entry.key"
+            [attr.aria-selected]="activeKey() === entry.key"
+            (click)="selectEntry(entry.key)"
           >
-            Light
+            {{ entry.title }}
           </button>
-          <button
-            type="button"
-            role="radio"
-            [attr.aria-checked]="themeService.theme() === 'dark'"
-            [class.is-active]="themeService.theme() === 'dark'"
-            (click)="themeService.setTheme('dark')"
-          >
-            Dark
-          </button>
-        </div>
+        }
+        @if (filteredEntries().length === 0) {
+          <p class="explorer__empty">No components match "{{ searchQuery() }}".</p>
+        }
       </div>
     </div>
 
-    <div
-      class="preview"
-      [style.--brand]="palette().brand"
-      [style.--brand-strong]="palette().brandStrong"
-      [style.--brand-soft]="palette().brandSoft"
-      [style.--on-brand]="palette().onBrand"
-      [style.--focus-ring]="palette().brand"
-      [style.--radius-sm]="radiusValues().sm"
-      [style.--radius-md]="radiusValues().md"
-      [style.--radius-lg]="radiusValues().lg"
-      [style.--space-3]="densityValues().space3"
-      [style.--space-4]="densityValues().space4"
-    >
-      <au-alert-banner
-        variant="critical"
-        title="SpO2 87% · Bed 4B-12"
-        text="Below 90% for 2 minutes. Nurse on duty notified at 14:32."
-        [acknowledgeLabel]="alertAcknowledged() ? 'Acknowledged' : 'Acknowledge'"
-        (acknowledge)="alertAcknowledged.set(true)"
-      />
-
-      <au-occupancy-meter label="Ward 4B · Cardiology" [occupied]="21" [capacity]="24" />
-
-      <div class="preview__row">
-        <au-bed-card
-          code="4B-12"
-          name="M. Oliveira, 67"
-          status="critical"
-          statusLabel="Critical"
-          diagnosis="Post-op cardiac"
-          dayOfStay="Day 2"
-          nextEvent="Visit due 15:00"
-        />
-        <au-bed-card code="4B-13" name="Ready for admission" [free]="true" />
+    <div class="explorer__detail">
+      <div class="explorer__detail-header">
+        <h2 class="explorer__detail-title">{{ activeEntry().title }}</h2>
+        <au-button variant="ghost" (click)="activeEntry().reset()">Reset</au-button>
       </div>
 
-      <au-vital-sign
-        label="Heart rate"
-        [value]="78"
-        unit="bpm"
-        status="stable"
-        [range]="[60, 100]"
-        [history]="heartRateHistory"
-      />
+      <app-prop-controls [controls]="activeEntry().controls()" />
 
-      <div class="preview__row">
-        <au-button variant="primary">Admit patient</au-button>
-        <au-button variant="secondary">View chart</au-button>
-        <au-status-pill status="stable">Stable</au-status-pill>
-      </div>
+      <app-showcase-example [title]="activeEntry().title" [code]="activeEntry().code()">
+        @switch (activeKey()) {
+          @case ('button') {
+            @let buttonIcon = buttonEntry.state().icon;
+            <au-button
+              [variant]="buttonEntry.state().variant"
+              [icon]="buttonIcon === 'none' ? undefined : buttonIcon"
+              [type]="buttonEntry.state().type"
+              [disabled]="buttonEntry.state().disabled"
+            >
+              {{ buttonEntry.state().label }}
+            </au-button>
+          }
+          @case ('status-pill') {
+            <au-status-pill [status]="statusPillEntry.state().status">
+              {{ statusPillEntry.state().label }}
+            </au-status-pill>
+          }
+          @case ('text-field') {
+            <au-text-field
+              [label]="textFieldEntry.state().label"
+              [placeholder]="textFieldEntry.state().placeholder || undefined"
+              [type]="textFieldEntry.state().type"
+              [errorText]="textFieldEntry.state().errorText || undefined"
+              [helpText]="textFieldEntry.state().errorText ? undefined : textFieldEntry.state().helpText || undefined"
+            />
+          }
+          @case ('alert-banner') {
+            <au-alert-banner
+              [variant]="alertBannerEntry.state().variant"
+              [title]="alertBannerEntry.state().title"
+              [text]="alertBannerEntry.state().text || undefined"
+              [acknowledgeLabel]="
+                alertBannerEntry.acknowledged()
+                  ? 'Acknowledged'
+                  : alertBannerEntry.state().acknowledgeLabel || undefined
+              "
+              (acknowledge)="alertBannerEntry.acknowledged.set(true)"
+            />
+          }
+          @case ('occupancy-meter') {
+            <au-occupancy-meter
+              [label]="occupancyMeterEntry.state().label"
+              [occupied]="occupancyMeterEntry.state().occupied"
+              [capacity]="occupancyMeterEntry.state().capacity"
+            />
+          }
+          @case ('vital-sign') {
+            <au-vital-sign
+              [label]="vitalSignEntry.state().label"
+              [value]="vitalSignEntry.resolvedValue()"
+              [unit]="vitalSignEntry.state().unit || undefined"
+              [status]="vitalSignEntry.state().status"
+              [range]="vitalSignEntry.resolvedRange()"
+              [history]="vitalSignEntry.resolvedHistory()"
+            />
+          }
+          @case ('bed-card') {
+            @let bedStatus = bedCardEntry.state().status;
+            <au-bed-card
+              [code]="bedCardEntry.state().code"
+              [name]="bedCardEntry.state().name"
+              [free]="bedCardEntry.state().free"
+              [status]="bedStatus === 'none' ? undefined : bedStatus"
+              [statusLabel]="bedCardEntry.state().statusLabel || undefined"
+              [diagnosis]="bedCardEntry.state().diagnosis || undefined"
+              [dayOfStay]="bedCardEntry.state().dayOfStay || undefined"
+              [nextEvent]="bedCardEntry.state().nextEvent || undefined"
+            />
+          }
+          @case ('icon') {
+            <au-icon [name]="iconEntry.state().name" [size]="iconEntry.state().size" />
+          }
+        }
+      </app-showcase-example>
     </div>
-  </section>
-
-  <section class="tokens">
-    <h2 class="tokens__title">What actually changed</h2>
-    <p class="tokens__subtitle">
-      Nothing above is a special "playground" version of a component — these are
-      the same CSS custom properties every Aurora UI component already reads.
-    </p>
-    <pre class="tokens__code"><code>{{ tokensSnippet() }}</code></pre>
   </section>
 </main>
 

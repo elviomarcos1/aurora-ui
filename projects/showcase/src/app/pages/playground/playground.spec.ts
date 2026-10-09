@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/angular';
+import { render, screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 import { provideRouter } from '@angular/router';
 
@@ -24,73 +24,76 @@ describe('Playground', () => {
     return render(Playground, { providers: [provideRouter([])] });
   }
 
-  it('renders the heading and the live preview components', async () => {
+  it('renders the heading and every component in the list', async () => {
     await setup();
 
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Theme playground' }),
+      screen.getByRole('heading', { level: 1, name: 'Component playground' }),
     ).toBeInTheDocument();
-    expect(screen.getByText('M. Oliveira, 67')).toBeInTheDocument();
-    expect(screen.getByRole('meter')).toBeInTheDocument();
+
+    for (const title of [
+      'Button',
+      'StatusPill',
+      'TextField',
+      'AlertBanner',
+      'OccupancyMeter',
+      'VitalSign',
+      'BedCard',
+      'Icon',
+    ]) {
+      expect(screen.getByRole('option', { name: title })).toBeInTheDocument();
+    }
   });
 
-  it('defaults to the Aurora teal and the default radius/density presets', async () => {
+  it('defaults to the Button component with its default props', async () => {
     await setup();
 
-    expect(screen.getByText('#0B6E69')).toBeInTheDocument();
-    expect(screen.getByRole('radio', { name: 'Rounded' })).toHaveAttribute(
-      'aria-checked',
+    expect(screen.getByRole('option', { name: 'Button' })).toHaveAttribute(
+      'aria-selected',
       'true',
     );
-    expect(screen.getByRole('radio', { name: 'Comfortable' })).toHaveAttribute(
-      'aria-checked',
-      'true',
-    );
+    expect(screen.getByRole('button', { name: 'Admit patient' })).toBeInTheDocument();
+    expect(screen.getByText(/variant="primary"/)).toBeInTheDocument();
   });
 
-  it('updates the token snippet when the primary color changes', async () => {
+  it('filters the component list by search', async () => {
     await setup();
 
-    const colorInput = screen.getByLabelText('Primary color');
-    fireEvent.input(colorInput, { target: { value: '#ff0000' } });
+    await userEvent.type(screen.getByLabelText('Search components'), 'Bed');
 
-    expect(screen.getByText('#FF0000')).toBeInTheDocument();
-    expect(screen.getByText(/--brand: #FF0000/)).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'BedCard' })).toBeInTheDocument();
+    expect(screen.queryByRole('option', { name: 'Button' })).not.toBeInTheDocument();
   });
 
-  it('resets the primary color back to the default teal', async () => {
+  it('switches the active component on click', async () => {
     await setup();
 
-    const colorInput = screen.getByLabelText('Primary color');
-    fireEvent.input(colorInput, { target: { value: '#ff0000' } });
+    await userEvent.click(screen.getByRole('option', { name: 'StatusPill' }));
+
+    expect(screen.getByRole('heading', { level: 2, name: 'StatusPill' })).toBeInTheDocument();
+    expect(screen.getByText('Critical')).toBeInTheDocument();
+  });
+
+  it('updates the live component and the code snippet when a control changes', async () => {
+    await setup();
+
+    const labelInput = screen.getByLabelText('Label');
+    await userEvent.clear(labelInput);
+    await userEvent.type(labelInput, 'Discharge patient');
+
+    expect(screen.getByRole('button', { name: 'Discharge patient' })).toBeInTheDocument();
+    expect(screen.getByText(/Discharge patient<\/au-button>/)).toBeInTheDocument();
+  });
+
+  it('resets the active component back to its defaults', async () => {
+    await setup();
+
+    const labelInput = screen.getByLabelText('Label');
+    await userEvent.clear(labelInput);
+    await userEvent.type(labelInput, 'Discharge patient');
+
     await userEvent.click(screen.getByRole('button', { name: 'Reset' }));
 
-    expect(screen.getByText('#0B6E69')).toBeInTheDocument();
-  });
-
-  it('switches the corner radius preset and reflects it in the snippet', async () => {
-    await setup();
-
-    await userEvent.click(screen.getByRole('radio', { name: 'Sharp' }));
-
-    expect(screen.getByRole('radio', { name: 'Sharp' })).toHaveAttribute('aria-checked', 'true');
-    expect(screen.getByText(/--radius-lg: 8px/)).toBeInTheDocument();
-  });
-
-  it('switches the density preset and reflects it in the snippet', async () => {
-    await setup();
-
-    await userEvent.click(screen.getByRole('radio', { name: 'Compact' }));
-
-    expect(screen.getByText(/--space-4: 10px/)).toBeInTheDocument();
-  });
-
-  it('switches theme from the theme segmented control', async () => {
-    await setup();
-
-    await userEvent.click(screen.getByRole('radio', { name: 'Dark' }));
-
-    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
-    expect(screen.getByRole('radio', { name: 'Dark' })).toHaveAttribute('aria-checked', 'true');
+    expect(screen.getByRole('button', { name: 'Admit patient' })).toBeInTheDocument();
   });
 });
