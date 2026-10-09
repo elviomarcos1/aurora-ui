@@ -68,19 +68,23 @@
 .site-header__nav {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
 
   a {
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-pill);
     font: 600 14px/20px var(--font-sans);
     color: var(--ink-muted);
     text-decoration: none;
 
     &:hover {
       color: var(--ink);
+      background: var(--surface-2);
     }
 
     &.is-active {
       color: var(--brand);
+      background: var(--brand-soft);
     }
 
     &:focus-visible {
