@@ -48,7 +48,7 @@
 .au-vital--critical .au-vital__spark circle { fill: var(--critical); }
 
 /* BedCard */
-.au-bed { position: relative; padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) + 4px); display: grid; gap: var(--space-2); overflow: hidden; min-width: 0; }
+.au-bed { position: relative; padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) + 4px); display: grid; align-content: start; gap: var(--space-2); overflow: hidden; min-width: 0; min-height: 134px; height: 100%; }
 .au-bed::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--line-strong); }
 .au-bed--critical::before { background: var(--critical); }
 .au-bed--warning::before { background: var(--warning); }
