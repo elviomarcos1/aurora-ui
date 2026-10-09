@@ -1,13 +1,47 @@
 <header class="site-header">
   <a class="site-header__logo" routerLink="/">
-    <img src="assets/brand/aurora-wordmark.svg" alt="Aurora Hospital" width="130" height="32" />
+    <img [src]="markSrc()" alt="" width="32" height="32" />
+    <span class="site-header__wordmark">
+      <span class="site-header__wordmark-primary">Aurora</span>
+      <span class="site-header__wordmark-secondary">Hospital</span>
+    </span>
   </a>
-  <nav class="site-header__nav">
-    <a routerLink="/demo" routerLinkActive="is-active">Demo</a>
-    <a routerLink="/playground" routerLinkActive="is-active">Playground</a>
-    <a routerLink="/case-study" routerLinkActive="is-active">Case study</a>
-    <a href="https://github.com/elviomarcos1/aurora-ui" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://github.com/elviomarcos1/aurora-ui/tree/main/storybook-static" target="_blank" rel="noopener">Storybook</a>
+
+  <button
+    type="button"
+    class="site-header__menu-toggle"
+    [attr.aria-expanded]="isMenuOpen()"
+    aria-controls="site-nav"
+    [attr.aria-label]="isMenuOpen() ? 'Close menu' : 'Open menu'"
+    (click)="toggleMenu()"
+  >
+    @if (isMenuOpen()) {
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="6" y1="6" x2="18" y2="18" />
+        <line x1="6" y1="18" x2="18" y2="6" />
+      </svg>
+    } @else {
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    }
+  </button>
+
+  <nav id="site-nav" class="site-header__nav" [class.is-open]="isMenuOpen()">
+    <a routerLink="/demo" routerLinkActive="is-active" (click)="closeMenu()">Demo</a>
+    <a routerLink="/playground" routerLinkActive="is-active" (click)="closeMenu()">Playground</a>
+    <a routerLink="/case-study" routerLinkActive="is-active" (click)="closeMenu()">Case study</a>
+    <a href="https://github.com/elviomarcos1/aurora-ui" target="_blank" rel="noopener" (click)="closeMenu()">GitHub</a>
+    <a
+      href="https://github.com/elviomarcos1/aurora-ui/tree/main/storybook-static"
+      target="_blank"
+      rel="noopener"
+      (click)="closeMenu()"
+    >
+      Storybook
+    </a>
     <au-button variant="secondary" (click)="themeService.toggleTheme()">
       @if (themeService.theme() === 'dark') {
         <svg

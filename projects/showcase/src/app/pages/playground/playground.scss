@@ -66,6 +66,23 @@
   border-radius: var(--radius-sm);
   background: none;
   cursor: pointer;
+  overflow: hidden;
+
+  // The native color swatch ships its own inner padding/border, which leaves
+  // a gap between this box's border and the actual color fill.
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    border: none;
+    border-radius: var(--radius-sm);
+  }
+
+  &::-moz-color-swatch {
+    border: none;
+    border-radius: var(--radius-sm);
+  }
 }
 
 .control__hex {
