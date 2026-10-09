@@ -4,6 +4,7 @@ node_modules/
 dist/
 out-tsc/
 storybook-static/
+_site/
 .angular/
 coverage/
 projects/aurora-ui/src/styles/tokens-*.css
