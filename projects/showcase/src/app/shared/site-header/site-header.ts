@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   ElementRef,
   HostListener,
   inject,
@@ -30,12 +29,8 @@ export class SiteHeader {
 
   protected readonly themeService = inject(ThemeService);
 
-  /** Logo mark SVG for the current theme. */
-  protected readonly markSrc = computed(() =>
-    this.themeService.theme() === 'dark'
-      ? 'assets/brand/aurora-mark-dark.svg'
-      : 'assets/brand/aurora-mark-light.svg',
-  );
+  /** Logo mark SVG shown in the header. */
+  protected readonly markSrc = 'assets/brand/aurora-mark-light.svg';
 
   /** Whether the mobile navigation panel is expanded. */
   protected readonly isMenuOpen = signal(false);

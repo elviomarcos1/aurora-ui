@@ -28,15 +28,12 @@ describe('SiteHeader', () => {
     expect(screen.getByRole('link', { name: 'GitHub' })).toBeInTheDocument();
   });
 
-  it('swaps the logo mark for the current theme', async () => {
+  it('renders the logo mark', async () => {
     await render(SiteHeader, { providers: [provideRouter([])] });
 
     const logo = screen.getByRole('link', { name: 'Aurora Hospital' });
     const img = logo.querySelector('img') as HTMLImageElement;
     expect(img.getAttribute('src')).toBe('assets/brand/aurora-mark-light.svg');
-
-    await userEvent.click(screen.getByRole('button', { name: /dark mode/i }));
-    expect(img.getAttribute('src')).toBe('assets/brand/aurora-mark-dark.svg');
   });
 
   it('toggles the theme and flips the toggle label', async () => {
