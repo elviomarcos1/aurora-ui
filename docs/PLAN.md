@@ -55,7 +55,7 @@ Pronto quando: alguém entende o projeto em 30 segundos na home.
 ## Fase 6 · Publicação e polimento (semana 8)
 - [x] Publicar a biblioteca no npm (ex.: `@aurora-hospital/ui`)
 - [x] Deploy da vitrine e do Storybook com links públicos
-- [ ] README em inglês com GIF, links, decisões de arquitetura e como rodar
+- [x] README em inglês com links, decisões de arquitetura e como rodar
 - [ ] Auditoria: Lighthouse acima de 90 e zero erros de acessibilidade
 - [ ] Links no currículo, no LinkedIn e repositório fixado no GitHub
 

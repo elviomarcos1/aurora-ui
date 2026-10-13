@@ -6,15 +6,22 @@ An accessible Angular design system for real-time hospital dashboards: bed occup
 
 > **Portfolio project.** Aurora Hospital is a fictional brand. It is inspired by the real-time dashboards I designed and built for a hospital in Brazil, used by staff across the entire organization. All names, patients and data are invented.
 
-## Status
-
-🚧 Work in progress. The design system is specified; the Angular implementation is being built in phases. See the [plan](docs/PLAN.md).
+## Links
 
 | | |
 | --- | --- |
-| Library | `@aurora-hospital/ui` (coming soon) |
-| Storybook | coming soon |
-| Showcase | coming soon |
+| Library | [`@aurora-hospital/ui`](https://www.npmjs.com/package/@aurora-hospital/ui) on npm |
+| Showcase | [elviomarcos1.github.io/aurora-ui](https://elviomarcos1.github.io/aurora-ui/) — theme playground, ward demo, case study |
+| Storybook | [elviomarcos1.github.io/aurora-ui/storybook](https://elviomarcos1.github.io/aurora-ui/storybook/) — every component, every variant, both themes |
+| Case study | [elviomarcos1.github.io/aurora-ui/case-study](https://elviomarcos1.github.io/aurora-ui/case-study) — problem, design decisions, architecture, results |
+
+## Install
+
+```bash
+npm install @aurora-hospital/ui
+```
+
+Requires Angular 22+ with `@angular/core`, `@angular/common`, `@angular/forms` and `@angular/platform-browser` as peer dependencies. See the [package README](projects/aurora-ui/README.md) for setup (tokens, theme) and usage.
 
 ## Run locally
 
@@ -41,6 +48,14 @@ npm run build:lib    # builds the library into dist/aurora-ui
 ## Stack
 
 Angular (standalone components, Signals, OnPush) · TypeScript · SCSS with CSS custom properties · Lucide icons · Jest + Testing Library · Storybook with a11y addon · GitHub Actions
+
+## Architecture decisions
+
+A few choices worth explaining in an interview:
+
+- [**Standalone components and Signals**](docs/decisions/0001-standalone-components-and-signals.md) — no NgModules; inputs, outputs and state as Signals (`input()`, `model()`, `computed()`), `OnPush` everywhere.
+- [**Design tokens compiled to CSS custom properties**](docs/decisions/0002-design-tokens-as-css-variables.md) — tokens live once in DTCG JSON (`design/tokens/`) and compile to CSS variables, so a component never hard-codes a color and themes switch by swapping a `data-theme` attribute.
+- [**Lucide as the icon library**](docs/decisions/0003-lucide-icons.md) and [**inlining the curated SVGs**](docs/decisions/0004-inline-icon-svgs.md) — a 39-icon curated set, inlined as Angular templates instead of depending on `lucide-angular`, so the published package has one fewer runtime dependency.
 
 ## Design principles
 
