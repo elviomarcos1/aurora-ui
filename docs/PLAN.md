@@ -56,7 +56,7 @@ Pronto quando: alguém entende o projeto em 30 segundos na home.
 - [x] Publicar a biblioteca no npm (ex.: `@aurora-hospital/ui`)
 - [x] Deploy da vitrine e do Storybook com links públicos
 - [x] README em inglês com links, decisões de arquitetura e como rodar
-- [ ] Auditoria: Lighthouse acima de 90 e zero erros de acessibilidade
+- [x] Auditoria: Lighthouse acima de 90 e zero erros de acessibilidade
 - [ ] Links no currículo, no LinkedIn e repositório fixado no GitHub
 
 Pronto quando: os três links funcionam e estão no currículo.
