@@ -37,6 +37,7 @@
   gap: var(--space-3);
   position: sticky;
   top: var(--space-6);
+  min-width: 0;
 }
 
 .explorer__search {
@@ -126,6 +127,22 @@
   }
 
   .explorer__list {
+    flex-direction: row;
+    flex-wrap: nowrap;
     max-height: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .explorer__item {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
   }
 }

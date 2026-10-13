@@ -2,6 +2,12 @@
 @use '../../aurora-ui/src/styles/tokens-light.css';
 @use '../../aurora-ui/src/styles/tokens-dark.css';
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;

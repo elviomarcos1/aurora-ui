@@ -1,7 +1,13 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
 .prop-controls {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: var(--space-4);
+  min-width: 0;
 }
 
 .prop-controls__row {
