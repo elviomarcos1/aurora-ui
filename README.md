@@ -1,4 +1,9 @@
-<p align="center"><img src="design/aurora-wordmark.svg" alt="Aurora Hospital" width="260"></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="design/aurora-wordmark-dark.svg">
+    <img src="design/aurora-wordmark.svg" alt="Aurora Hospital" width="260">
+  </picture>
+</p>
 
 # Aurora UI
 

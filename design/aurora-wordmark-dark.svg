@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" width="260" height="64">
+  <title>Aurora Hospital</title>
+  <rect width="64" height="64" rx="13" fill="#0B6E69"/>
+  <path d="M12.91 43.5a20.39 20.39 0 1 1 38.3 0z" fill="#F2A65A"/>
+  <rect x="28.92" y="24.53" width="6.16" height="19.2" fill="#FFFFFF"/>
+  <rect x="22.64" y="30.58" width="18.73" height="6.4" fill="#FFFFFF"/>
+  <rect x="6.64" y="43.5" width="50.73" height="2.01" fill="#FFFFFF"/>
+  <text x="80" y="34" font-family="Bricolage Grotesque, Figtree, system-ui, sans-serif" font-size="26" font-weight="700" fill="#E6F0EE">Aurora</text>
+  <text x="80" y="54" font-family="Figtree, system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="2.6" fill="#9DB3AF">HOSPITAL</text>
+</svg>
