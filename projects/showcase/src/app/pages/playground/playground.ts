@@ -90,6 +90,11 @@ export class Playground {
     this.searchQuery.set((event.target as HTMLInputElement).value);
   }
 
+  protected clearSearch(input: HTMLInputElement): void {
+    this.searchQuery.set('');
+    input.focus();
+  }
+
   protected selectEntry(key: string): void {
     this.activeKey.set(key);
   }
