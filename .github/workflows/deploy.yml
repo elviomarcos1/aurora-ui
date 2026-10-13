@@ -46,6 +46,15 @@ jobs:
           cp -r storybook-static/. _site/storybook/
           cp _site/index.html _site/404.html
 
+          # The showcase is a client-side SPA: deep routes have no matching
+          # file, so GitHub Pages would 404 them. Copy index.html into each
+          # route's own folder so GitHub Pages serves it directly as a real
+          # 200 response instead of falling back to 404.html.
+          for route in playground demo case-study; do
+            mkdir -p "_site/$route"
+            cp _site/index.html "_site/$route/index.html"
+          done
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
